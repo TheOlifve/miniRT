@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:20:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/23 21:26:53 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:49:29 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_pars
 	int		sp;
 	int		pl;
 	int		cy;
+	char	**element;
 }			t_pars;
 
 
