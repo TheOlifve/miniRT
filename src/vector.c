@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 23:47:27 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/18 16:34:07 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:00:45 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ float	vec_len(t_vector *vec)
 	return (len);
 }
 
-float	vec_dot_product(t_vector *vec1, t_vector *vec2)
+float	vec_scal(t_vector *vec1, t_vector *vec2)
 {
 	float	num;
 
-	num = (vec1->x * vec2->x) + (vec1->y * vec2->y) + (vec1->z * vec2->z);
+	num = ((vec1->x * vec2->x) + (vec1->y * vec2->y) + (vec1->z * vec2->z));
 	return (num);
 }
 

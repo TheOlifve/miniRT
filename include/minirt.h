@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:20:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/23 21:26:53 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:59:05 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ typedef struct s_mrt
 	void	*mlx_win;
 }			t_mrt;
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+}				t_data;
+
 typedef struct s_pars
 {
 	int		A;
@@ -44,7 +51,6 @@ typedef struct s_pars
 	int		pl;
 	int		cy;
 }			t_pars;
-
 
 int		err_print(int num);
 int		my_exit(t_mrt *mrt);
@@ -63,6 +69,8 @@ char	*get_next_line(int fd);
 char	**read_file(int fd, char *file);
 void	err_exit(int num);
 void	doublefree(char **str);
+void	ray_trace(t_mrt *mrt, t_scene *scene, int mlx_x, int mlx_y);
 float	my_atof(char *str);
+float	sphere_touch(t_camera *cam, t_vector *ray, t_sphere *spheres, float disk);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 23:40:19 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/18 16:35:07 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:55:46 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_vector
 
 void		vec_norm(t_vector *vec);
 float		vec_len(t_vector *vec);
-float		vec_dot_product(t_vector *vec1, t_vector *vec2);
+float		vec_scal(t_vector *vec1, t_vector *vec2);
 t_vector	*new_vec(float x, float y, float z);
 t_vector	*vec_sub(t_vector *vec1, t_vector *vec2);
 
