@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:29:07 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/22 14:10:06 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/27 15:41:24 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ typedef struct s_scene
 	float		width;
 	float		hight;
 }			t_scene;
+
+typedef struct s_vplane
+{
+	float		x_pixel;
+	float		y_pixel;
+	float		width;
+	float		hight;
+}			t_vplane;
 
 t_scene		*new_scene(t_camera *cam, t_sphere *sphere);
 t_sphere	*new_sphere(t_vector *center, float diameter);

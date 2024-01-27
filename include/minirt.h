@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:20:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/25 13:49:29 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/27 15:39:23 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		valid_coords(char *str);
 int		parser(t_scene *scene, char *file);
 int		valid_file_type(char *s1, char *s2);
 int		valid_color(char *str, int i, int j);
+int		ray_tracing(t_mrt *mrt, t_scene *scene);
 int		valid_norm_vec(char *str, int i, float j);
 int		valid_element(t_pars *pars, char **element);
 int		valid_file_elements(t_pars *pars, char **content);
