@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:09:09 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/27 19:23:20 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/27 22:12:58 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,28 @@ int	main(int argc, char **argv)
 	t_vector	*cam_direction;
 
 	mrt.mlx = mlx_init();
-	sphere_center = new_vec(3, 2, 15);
-	sphere = new_sphere(sphere_center, 12);
+	sphere_center = new_vec(5, 5, 10);
+	sphere = new_sphere(sphere_center, 5);
 	cam_center  = new_vec(0, 0, 0);
 	cam_direction = new_vec(0, 0, 1);
-	cam = new_cam(cam_center, cam_direction, 70);
+	cam = new_cam(cam_center, cam_direction, 123);
 	scene = new_scene(cam, sphere);
 	scene->width = 800;
-	scene->hight = 600;
-	mrt.mlx_win = mlx_new_window(mrt.mlx, scene->width, scene->hight, "miniRT");
+	scene->height = 600;
+	mrt.mlx_win = mlx_new_window(mrt.mlx, scene->width, scene->height, "miniRT");
 	// while (scene->width >= 0)
 	// {
-	// 	scene->hight = 600;
-	// 	while (scene->hight >= 0)
+	// 	scene->height = 600;
+	// 	while (scene->height >= 0)
 	// 	{
-	// 		if (scene->hight >= 0 && scene->hight <= 100)
-	// 			mlx_pixel_put(mrt.mlx, mrt.mlx_win, scene->width, scene->hight, 16777215);
-	// 		scene->hight--;
+	// 		if (scene->height >= 0 && scene->height <= 100)
+	// 			mlx_pixel_put(mrt.mlx, mrt.mlx_win, scene->width, scene->height, 16777215);
+	// 		scene->height--;
 	// 	}
 	// 	scene->width--;
 	// }
-	ray_tracing(&mrt, scene);
+	// ray_trace(&mrt, scene, 0, 0);
+	ray_trace(&mrt, scene);
 	mlx_hook(mrt.mlx_win, 2, 1L << 0, key_press, &mrt);
 	mlx_hook(mrt.mlx_win, 17, 1L << 0, my_exit, &mrt);
 	mlx_loop(mrt.mlx);
