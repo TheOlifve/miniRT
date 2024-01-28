@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:20:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 15:36:22 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/28 15:54:21 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ typedef struct s_mrt
 
 typedef struct s_pars
 {
-	int		A;
-	int		C;
-	int		L;
+	int		a;
+	int		c;
+	int		l;
 	int		sp;
 	int		pl;
 	int		cy;
 	char	**element;
 }			t_pars;
-
 
 int			err_print(int num);
 int			my_exit(t_mrt *mrt);

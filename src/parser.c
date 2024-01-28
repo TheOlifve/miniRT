@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:16:04 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 14:43:29 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/28 15:51:31 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	parser_init(t_pars *pars)
 {
-	pars->A = 0;
-	pars->C = 0;
-	pars->L = 0;
+	pars->a = 0;
+	pars->c = 0;
+	pars->l = 0;
 	pars->sp = 0;
 	pars->pl = 0;
 	pars->cy = 0;
