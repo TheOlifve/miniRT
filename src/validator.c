@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:03:17 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/23 21:27:59 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:29:37 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	valid_file_type(char *s1, char *s2)
 int	valid_camera(t_pars *pars, int argc, char **element)
 {
 	int	fov;
-	
+
 	if (argc != 4)
 		return (1);
 	if (valid_coords(element[1]))
@@ -55,7 +55,7 @@ int	valid_camera(t_pars *pars, int argc, char **element)
 int	valid_light(t_pars *pars, int argc, char **element)
 {
 	float	brightness;
-	
+
 	if (argc != 4)
 		return (1);
 	if (valid_coords(element[1]))
@@ -75,7 +75,7 @@ int	valid_file_elements(t_pars *pars, char **content)
 {
 	int		i;
 	char	**element;
-	
+
 	i = -1;
 	while (content && content[++i])
 	{

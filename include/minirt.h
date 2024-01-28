@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:20:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/27 21:28:58 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:37:51 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 
 typedef struct s_mrt
 {
+	int		x;
+	int		y;
 	void	*mlx;
 	void	*mlx_win;
 }			t_mrt;
@@ -47,25 +49,24 @@ typedef struct s_pars
 }			t_pars;
 
 
-int		err_print(int num);
-int		my_exit(t_mrt *mrt);
-int		valid_int(char *str);
-int		valid_float(char *str);
-int		valid_coords(char *str);
-int		parser(t_scene *scene, char *file);
-int		valid_file_type(char *s1, char *s2);
-int		valid_color(char *str, int i, int j);
-int		ray_trace(t_mrt *mrt, t_scene *scene);
-// void	ray_trace(t_mrt *mrt, t_scene *scene, int mlx_x, int mlx_y);
-int		valid_norm_vec(char *str, int i, float j);
-int		valid_element(t_pars *pars, char **element);
-int		valid_file_elements(t_pars *pars, char **content);
-int		valid_light(t_pars *pars, int argc, char **element);
-int		valid_camera(t_pars *pars, int argc, char **element);
-char	*get_next_line(int fd);
-char	**read_file(int fd, char *file);
-void	err_exit(int num);
-void	doublefree(char **str);
-float	my_atof(char *str);
+int			err_print(int num);
+int			my_exit(t_mrt *mrt);
+int			valid_int(char *str);
+int			valid_float(char *str);
+int			valid_coords(char *str);
+int			parser(t_scene *scene, char *file);
+int			valid_file_type(char *s1, char *s2);
+int			valid_color(char *str, int i, int j);
+int			ray_trace(t_mrt *mrt, t_scene *scene);
+int			valid_norm_vec(char *str, int i, float j);
+int			valid_element(t_pars *pars, char **element);
+int			valid_file_elements(t_pars *pars, char **content);
+int			valid_light(t_pars *pars, int argc, char **element);
+int			valid_camera(t_pars *pars, int argc, char **element);
+char		*get_next_line(int fd);
+char		**read_file(int fd, char *file);
+void		err_exit(int num);
+void		doublefree(char **str);
+float		my_atof(char *str);
 
 #endif

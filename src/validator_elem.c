@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:36:53 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/23 21:29:02 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:28:55 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ambient_lightning(t_pars *pars, int argc, char **element)
 int	sphere(t_pars *pars, int argc, char **element)
 {
 	float	diameter;
-	
+
 	if (argc != 4)
 		return (1);
 	if (valid_coords(element[1]))
@@ -98,9 +98,9 @@ int	valid_element(t_pars *pars, char **element)
 	while (element && element[++argc])
 		;
 	if (!ft_strcmp(element[0], "A") && !pars->A)
-		return(ambient_lightning(pars, argc, element));
+		return (ambient_lightning(pars, argc, element));
 	else if (!ft_strcmp(element[0], "C") && !pars->C)
-		return(valid_camera(pars, argc, element));
+		return (valid_camera(pars, argc, element));
 	else if (!ft_strcmp(element[0], "L") && !pars->L)
 		return (valid_light(pars, argc, element));
 	else if (ft_strcmp(element[0], "sp") == 0)
