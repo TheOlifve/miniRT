@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/27 22:17:27 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:09:46 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,21 @@ float	sphere_touch(t_camera *cam, t_vector *ray, t_sphere *spheres, float disk)
 int	ray_trace(t_mrt *mrt, t_scene *scene)
 {
 	int			color;
+	int			mlx_x;
+	int			mlx_y;
 	float		x;
 	float		y;
 	t_vector	*ray;
 	t_vplane	*vplane;
 
 	vplane =  get_vplane(scene->width, scene->height, scene->cams->fov);
-	y = 0;
-	while (y <= scene->height)
+	y = scene->height / 2;
+	mlx_y = 0;
+	while (y >= (-1) * (scene->height / 2))
 	{
-		x = 0;
-		while (x <= scene->width)
+		mlx_x = 0;
+		x = (scene->width / 2) * (-1);
+		while (x <= scene->width / 2)
 		{
 			ray = new_vec(x * vplane->x_pixel, y * vplane->y_pixel, 1);
 			vec_norm(ray);
@@ -70,10 +74,12 @@ int	ray_trace(t_mrt *mrt, t_scene *scene)
 				color = 16777215;
 			else
 				color = 0;
-			mlx_pixel_put(mrt->mlx, mrt->mlx_win, x, y, color);
+			mlx_pixel_put(mrt->mlx, mrt->mlx_win, mlx_x, mlx_y, color);
 			x++;
+			mlx_x++;
 		}
-		y++;
+		mlx_y++;
+		y--;
 	}
 	return (0);
 }
