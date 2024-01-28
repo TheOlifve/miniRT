@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:20:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 14:37:51 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/28 15:36:22 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_pars
 
 int			err_print(int num);
 int			my_exit(t_mrt *mrt);
+int			rgbtoi(char	**color);
 int			valid_int(char *str);
 int			valid_float(char *str);
 int			valid_coords(char *str);
@@ -68,5 +69,6 @@ char		**read_file(int fd, char *file);
 void		err_exit(int num);
 void		doublefree(char **str);
 float		my_atof(char *str);
+float		sphere_touch(t_camera *cam, t_vector *ray, t_sphere *spheres);
 
 #endif

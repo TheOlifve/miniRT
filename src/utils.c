@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:06:05 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/22 18:47:02 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/28 15:23:53 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,16 @@ void	doublefree(char **str)
 		i++;
 	}
 	free(str);
+}
+
+int	rgbtoi(char	**color)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = ft_atoi(color[1]) * (256 * 256);
+	g = ft_atoi(color[2]) * 256;
+	b = ft_atoi(color[3]);
+	return (r + g + b);
 }

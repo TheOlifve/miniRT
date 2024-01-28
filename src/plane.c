@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
+/*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 16:35:40 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 15:27:27 by hrahovha         ###   ########.fr       */
+/*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
+/*   Updated: 2024/01/28 15:34:00 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_sphere	*new_sphere(t_vector *center, float diameter, char **color)
+t_plane	*new_plane(t_vector *vec, t_vector *norm_vec, char **color)
 {
-	t_sphere	*sphere;
+	t_plane	*plane;
 
-	sphere = malloc(sizeof(t_sphere));
-	if (!sphere)
+	plane = malloc(sizeof(t_plane));
+	if (!plane)
 		err_exit(1);
-	sphere->center = center;
-	sphere->r = diameter / 2;
-	sphere->color = rgbtoi(color);
-	return (sphere);
+	plane->point = vec;
+	plane->norm_vec = norm_vec;
+	plane->color = rgbtoi(color);
+	return (plane);
 }
