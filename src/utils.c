@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:06:05 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/22 18:47:02 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:09:45 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,38 @@ void	doublefree(char **str)
 		i++;
 	}
 	free(str);
+}
+
+void	dubfree(t_light **l, t_cylinder **c, t_plane **p, t_sphere **s)
+{
+	int	i;
+
+	i = -1;
+	while (l && l[++i])
+		free(l[i]);
+	free(l);
+	i = -1;
+	while (c && c[++i])
+		free(c[i]);
+	free(c);
+	i = -1;
+	while (p && p[++i])
+		free(p[i]);
+	free(p);
+	i = -1;
+	while (s && s[++i])
+		free(s[i]);
+	free(s);
+}
+
+int	rgbtoi(char	**color)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = ft_atoi(color[1]) * (256 * 256);
+	g = ft_atoi(color[2]) * 256;
+	b = ft_atoi(color[3]);
+	return (r + g + b);
 }

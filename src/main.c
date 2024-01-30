@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:09:09 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 14:10:21 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:36:15 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ int	main(int argc, char **argv)
 	t_vector	*cam_center;
 	t_vector	*cam_direction;
 
+	(void)cam; (void)sphere;
 	mrt.mlx = mlx_init();
-	sphere_center = new_vec(3, 3, 10);
+	sphere_center = new_vec(5, 5, 10);
 	sphere = new_sphere(sphere_center, 2);
 	cam_center  = new_vec(0, 0, 0);
 	cam_direction = new_vec(0, 0, 1);
 	cam = new_cam(cam_center, cam_direction, 70);
-	scene = new_scene(cam, sphere);
+	scene = new_scene();
 	scene->width = 800;
 	scene->height = 600;
 	mrt.mlx_win = mlx_new_window(mrt.mlx, scene->width, scene->height, "miniRT");
