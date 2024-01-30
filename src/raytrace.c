@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 15:23:32 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:33:00 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ray_trace(t_mrt *mrt, t_scene *scene)
 	t_vector	*ray;
 	t_vplane	*vplane;
 
-	vplane = get_vplane(scene->width, scene->height, scene->cams->fov);
+	vplane = get_vplane(scene->width, scene->height, scene->cam->fov);
 	y = scene->height / 2;
 	mrt->y = 0;
 	while (y >= (-1) * (scene->height / 2))
@@ -31,8 +31,8 @@ int	ray_trace(t_mrt *mrt, t_scene *scene)
 		{
 			ray = new_vec(x * vplane->x_pixel, y * vplane->y_pixel, 1);
 			vec_norm(ray);
-			if (sphere_touch(scene->cam, ray, scene->spheres))
-				color = scene->spheres->color;
+			if (sphere_touch(scene->cam, ray, scene->spheres[0]))
+				color = scene->spheres[0]->color;
 			else
 				color = 0;
 			mlx_pixel_put(mrt->mlx, mrt->mlx_win, mrt->x, mrt->y, color);

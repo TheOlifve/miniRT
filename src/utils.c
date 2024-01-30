@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:06:05 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 15:23:57 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:35:18 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,16 @@ void	dubfree(t_light **l, t_cylinder **c, t_plane **p, t_sphere **s)
 	free(s);
 }
 
-int	rgbtoi(char	**color)
+int	rgbtoi(char	*color)
 {
-	int	r;
-	int	g;
-	int	b;
+	int		r;
+	int		g;
+	int		b;
+	char	**spl;
 
-	r = ft_atoi(color[1]) * (256 * 256);
-	g = ft_atoi(color[2]) * 256;
-	b = ft_atoi(color[3]);
+	spl = ft_split (color, ',');
+	r = ft_atoi(spl[1]) * (256 * 256);
+	g = ft_atoi(spl[2]) * 256;
+	b = ft_atoi(spl[3]);
 	return (r + g + b);
 }

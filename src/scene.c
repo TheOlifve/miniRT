@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:53:40 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 15:06:04 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:33:58 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	scene_alloc(t_scene *scene, t_pars *pars)
 int	init_amb(t_scene *scene, char **type)
 {
 	scene->amblight->l_ratio = my_atof(type[1]);
-	scene->amblight->color = rgb
+	scene->amblight->color = rgbtoi(type[2]);
 }
 
 int	type_check(t_scene *scene, t_pars *pars, char **type)
