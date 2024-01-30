@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:53:40 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 19:57:53 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 22:45:03 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	init_cam(t_scene *scene, char **info)
 	direction = new_vec(my_atof(tmp[0]), my_atof(tmp[1]), my_atof(tmp[2]));
 	doublefree(tmp);
 	scene->cam = new_cam(center, direction, ft_atoi(info[3]));
-	//LEAK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	return (0);
 }
 
@@ -76,7 +75,6 @@ int	init_light(t_scene *scene, t_pars *pars, char **info)
 int	init_amb(t_scene *scene, char **info)
 {
 	scene->amblight = new_amblight(my_atof(info[1]), rgbtoi(info[2]));
-	//LEAK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	return (0);
 }
 
@@ -171,12 +169,6 @@ int	scene_fill(t_scene *scene, t_pars *pars)
 
 int	scene_alloc(t_scene *scene, t_pars *pars)
 {
-	scene->cam = malloc(sizeof(t_camera));
-	if (!scene->cam)
-		return (scene_free(scene));
-	scene->amblight = malloc(sizeof(t_amblight));
-	if (!scene->amblight)
-		return (scene_free(scene));
 	scene->lights = malloc(pars->l * sizeof(t_light *));
 	if (!scene->lights)
 		return (scene_free(scene));
