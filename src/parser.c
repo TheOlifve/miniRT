@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:16:04 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 15:22:50 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:28:02 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	parser(t_scene *scene, char *file)
 		doublefree(pars.element);
 		return (1);
 	}	
+	doublefree(pars.element);
 	return (0);
 }

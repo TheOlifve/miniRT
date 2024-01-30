@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:43:50 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 14:44:04 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:45:53 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ t_camera	*new_cam(t_vector *center, t_vector *direction, float fov)
 {
 	t_camera	*cam;
 
+	// cam = NULL;
+	// (void)center;
+	// (void)direction;
+	// (void)fov;
 	cam = malloc(sizeof(t_camera));
 	if (!cam)
 		err_exit(1);

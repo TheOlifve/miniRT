@@ -6,13 +6,13 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 16:14:47 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:42:11 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_cylinder	*new_cylinder(t_vector *cent, t_vector *nvec, char **dh, char **clr)
+t_cylinder	*new_cylinder(t_vector *cent, t_vector *nvec, char **dh, char *clr)
 {
 	t_cylinder	*cylinder;
 

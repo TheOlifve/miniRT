@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
+/*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 16:35:40 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 16:59:06 by hrahovha         ###   ########.fr       */
+/*   Created: 2024/01/30 15:58:29 by hrahovha          #+#    #+#             */
+/*   Updated: 2024/01/30 16:54:47 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_sphere	*new_sphere(t_vector *center, float diameter, char *color)
+t_light	*new_light(t_vector *coord, float bright, int color)
 {
-	t_sphere	*sphere;
+	t_light	*light;
 
-	sphere = malloc(sizeof(t_sphere));
-	if (!sphere)
+	light = malloc(sizeof(t_light));
+	if (!light)
 		err_exit(1);
-	sphere->center = center;
-	sphere->r = diameter / 2;
-	sphere->color = rgbtoi(color);
-	return (sphere);
+	light->coord = coord;
+	light->bright = bright;
+	light->color = color;
+	return (light);
+}
+
+t_amblight	*new_amblight(float l_ratio, int color)
+{
+	t_amblight	*amblight;
+
+	amblight = malloc(sizeof(t_amblight));
+	if (!amblight)
+		err_exit(1);
+	amblight->l_ratio = l_ratio;
+	amblight->color = color;
+	return (amblight);
 }

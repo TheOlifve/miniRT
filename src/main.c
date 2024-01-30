@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:09:09 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 15:29:28 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:57:31 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,22 @@ int	key_press(int key, t_mrt *mrt)
 
 int	main(int argc, char **argv)
 {
+	t_mrt		mrt;
 	t_scene		*scene;
 	
-	(void)argc;
-	(void)argv;
-	// if (argc != 2)
-	// 	err_exit(0);
-	// scene = NULL;
-	// if (parser(scene, argv[1]))
-	// 	err_exit(-1);
-	t_mrt		mrt;
-	mrt.mlx = mlx_init();
+	if (argc != 2)
+		err_exit(0);
+	scene = NULL;
 	scene = new_scene();
 	scene->width = 800;
 	scene->height = 600;
+	if (parser(scene, argv[1]))
+		err_exit(-1);
+	mrt.mlx = mlx_init();
 	mrt.mlx_win = mlx_new_window(mrt.mlx, scene->width, scene->height, "miniRT");
-	// while (scene->width >= 0)
-	// {
-	// 	scene->height = 600;
-	// 	while (scene->height >= 0)
-	// 	{
-	// 		if (scene->height >= 0 && scene->height <= 100)
-	// 			mlx_pixel_put(mrt.mlx, mrt.mlx_win, scene->width, scene->height, 16777215);
-	// 		scene->height--;
-	// 	}
-	// 	scene->width--;
-	// }
-	// ray_trace(&mrt, scene, 0, 0);
 	ray_trace(&mrt, scene);
 	mlx_hook(mrt.mlx_win, 2, 1L << 0, key_press, &mrt);
 	mlx_hook(mrt.mlx_win, 17, 1L << 0, my_exit, &mrt);
 	mlx_loop(mrt.mlx);
-	system("leaks minirt");
 	return (0);
 }

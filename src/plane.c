@@ -6,13 +6,13 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 15:34:00 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:42:38 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_plane	*new_plane(t_vector *vec, t_vector *norm_vec, char **color)
+t_plane	*new_plane(t_vector *vec, t_vector *norm_vec, char *color)
 {
 	t_plane	*plane;
 

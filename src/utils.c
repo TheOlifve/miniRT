@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:06:05 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 15:35:18 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:34:42 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,10 @@ int	rgbtoi(char	*color)
 	int		b;
 	char	**spl;
 
-	spl = ft_split (color, ',');
-	r = ft_atoi(spl[1]) * (256 * 256);
-	g = ft_atoi(spl[2]) * 256;
-	b = ft_atoi(spl[3]);
+	spl = ft_split(color, ',');
+	r = ft_atoi(spl[0]) * (256 * 256);
+	g = ft_atoi(spl[1]) * 256;
+	b = ft_atoi(spl[2]);
+	doublefree(spl);
 	return (r + g + b);
 }

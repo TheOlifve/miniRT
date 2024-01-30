@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 15:33:00 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:57:08 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ int	ray_trace(t_mrt *mrt, t_scene *scene)
 			else
 				color = 0;
 			mlx_pixel_put(mrt->mlx, mrt->mlx_win, mrt->x, mrt->y, color);
+			free(ray);
 			x++;
 			mrt->x++;
 		}
 		mrt->y++;
 		y--;
 	}
+	free(vplane);
 	return (0);
 }

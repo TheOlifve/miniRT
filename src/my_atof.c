@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 20:14:26 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/22 20:14:54 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:22:06 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ float	before_dot(char *str)
 
 float	my_atof(char *str)
 {
-	float	res;
 	int		i;
+	float	res;
 	float	sign;
 
 	res = 0;

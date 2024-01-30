@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:29:07 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 15:28:40 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:54:56 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_light
 {
 	int			color;
 	float		bright;
-	t_vector	light_coord;
+	t_vector	*coord;
 }			t_light;
 
 typedef struct s_amblight
@@ -79,9 +79,12 @@ typedef struct s_vplane
 }			t_vplane;
 
 t_scene		*new_scene(void);
+t_light		*new_light(t_vector *coord, float bright, int color);
+t_plane		*new_plane(t_vector *vec, t_vector *norm_vec, char *color);
 t_vplane	*get_vplane(float width, float height, float fov);
-t_sphere	*new_sphere(t_vector *center, float diameter, char **color);
+t_sphere	*new_sphere(t_vector *center, float diameter, char *color);
 t_camera	*new_cam(t_vector *center, t_vector *direction, float fov);
-t_cylinder	*new_cylinder(t_vector *cent, t_vector *nvec, char **dh, char **clr);
+t_amblight	*new_amblight(float l_ratio, int color);
+t_cylinder	*new_cylinder(t_vector *cent, t_vector *nvec, char **dh, char *clr);
 
 #endif
