@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:16:04 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 13:37:06 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:22:50 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	parser(t_scene *scene, char *file)
 {
 	t_pars	pars;
 	
+	(void)scene;
 	if (valid_file_type(file, ".rt"))
 		err_exit(2);
 	parser_init(&pars);

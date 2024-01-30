@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_validator.c                                    :+:      :+:    :+:   */
+/*   validator_var.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:36:55 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/23 19:11:46 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/28 14:28:15 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	valid_coords(char *str)
 		return (1);
 	if (coords[0] != NULL && coords[1] != NULL && coords[2] != NULL)
 	{
-		if (!valid_float(coords[0]) && !valid_float(coords[1]) &&
-			!valid_float(coords[2]))
+		if (!valid_float(coords[0]) && !valid_float(coords[1])
+			&& !valid_float(coords[2]))
 			doublefree(coords);
 		else
 		{

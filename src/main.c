@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:09:09 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 13:36:15 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:22:27 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	// if (parser(scene, argv[1]))
 	// 	err_exit(-1);
 	t_mrt		mrt;
+	char		*color[4];
 	t_camera	*cam;
 	t_sphere	*sphere;  
 	t_vector	*sphere_center;

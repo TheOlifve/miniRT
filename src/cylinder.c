@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 16:35:40 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 15:27:27 by hrahovha         ###   ########.fr       */
+/*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
+/*   Updated: 2024/01/28 16:14:47 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_sphere	*new_sphere(t_vector *center, float diameter, char **color)
+t_cylinder	*new_cylinder(t_vector *cent, t_vector *nvec, char **dh, char **clr)
 {
-	t_sphere	*sphere;
+	t_cylinder	*cylinder;
 
-	sphere = malloc(sizeof(t_sphere));
-	if (!sphere)
+	cylinder = malloc(sizeof(cylinder));
+	if (!cylinder)
 		err_exit(1);
-	sphere->center = center;
-	sphere->r = diameter / 2;
-	sphere->color = rgbtoi(color);
-	return (sphere);
+	cylinder->center = cent;
+	cylinder->norm_vec = nvec;
+	cylinder->r = my_atof(dh[0]) / 2;
+	cylinder->h = my_atof(dh[1]);
+	cylinder->color = rgbtoi(clr);
+	return (cylinder);
 }

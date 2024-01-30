@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:36:53 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 13:40:33 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:24:18 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ambient_lightning(t_pars *pars, int argc, char **element)
 int	sphere(t_pars *pars, int argc, char **element)
 {
 	float	diameter;
-	
+
 	if (argc != 4)
 		return (1);
 	if (valid_coords(element[1]))
