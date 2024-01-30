@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:03:17 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/23 21:27:59 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:37:06 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	valid_camera(t_pars *pars, int argc, char **element)
 	fov = ft_atoi(element[3]);
 	if (fov < 0 || fov > 180)
 		return (1);
-	pars->C += 1;
+	pars->c += 1;
 	return (0);
 }
 
@@ -67,7 +67,7 @@ int	valid_light(t_pars *pars, int argc, char **element)
 		return (1);
 	if (valid_color(element[3], -1, 0))
 		return (1);
-	pars->L += 1;
+	pars->l += 1;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:36:53 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/23 21:29:02 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:40:33 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ambient_lightning(t_pars *pars, int argc, char **element)
 		return (1);
 	if (valid_color(element[2], -1, 0))
 		return (1);
-	pars->A += 1;
+	pars->a += 1;
 	return (0);
 }
 
@@ -97,11 +97,11 @@ int	valid_element(t_pars *pars, char **element)
 	argc = -1;
 	while (element && element[++argc])
 		;
-	if (!ft_strcmp(element[0], "A") && !pars->A)
+	if (!ft_strcmp(element[0], "a") && !pars->a)
 		return(ambient_lightning(pars, argc, element));
-	else if (!ft_strcmp(element[0], "C") && !pars->C)
+	else if (!ft_strcmp(element[0], "c") && !pars->c)
 		return(valid_camera(pars, argc, element));
-	else if (!ft_strcmp(element[0], "L") && !pars->L)
+	else if (!ft_strcmp(element[0], "l"))
 		return (valid_light(pars, argc, element));
 	else if (ft_strcmp(element[0], "sp") == 0)
 		return (sphere(pars, argc, element));
