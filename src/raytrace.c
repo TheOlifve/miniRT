@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 18:57:08 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:55:06 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	ray_trace(t_mrt *mrt, t_scene *scene)
 		{
 			ray = new_vec(x * vplane->x_pixel, y * vplane->y_pixel, 1);
 			vec_norm(ray);
-			if (sphere_touch(scene->cam, ray, scene->spheres[0]))
-				color = scene->spheres[0]->color;
+			if (cylinder_touch(scene->cam, ray, scene->cylinders[0]))
+				color = scene->cylinders[0]->color;
 			else
 				color = 0;
 			mlx_pixel_put(mrt->mlx, mrt->mlx_win, mrt->x, mrt->y, color);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    Intersections.c                                   :+:      :+:    :+:   */
+/*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 15:35:47 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/02/05 11:24:23 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ float	sphere_touch(t_camera *cam, t_vector *ray, t_sphere *spheres)
 	root = 0;
 	disc = 0;
 	cam_sphere = vec_sub(cam->center, spheres->center);
-	c = vec_dot_product(cam_sphere, cam_sphere) - (spheres->r * spheres->r);
-	b = 2 * (vec_dot_product(cam_sphere, ray));
+	c = vec_dot(cam_sphere, cam_sphere) - (spheres->r * spheres->r);
+	b = 2 * (vec_dot(cam_sphere, ray));
 	disc = (b * b) - (4 * c);
 	free(cam_sphere);
 	if (disc < 0)

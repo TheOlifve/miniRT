@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:53:40 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 22:45:03 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:52:29 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	init_plane(t_scene *scene, t_pars *pars, char **info)
 	tmp = ft_split(info[2], ',');
 	norm_vec = new_vec(my_atof(tmp[0]), my_atof(tmp[1]), my_atof(tmp[2]));
 	doublefree(tmp);
-	scene->planes[pars->pl - 1] = new_plane(point, norm_vec, tmp[3]);
+	scene->planes[pars->pl - 1] = new_plane(point, norm_vec, info[3]);
 	pars->pl--;
 	return (0);
 }
@@ -122,11 +122,12 @@ int	init_cylinder(t_scene *scene, t_pars *pars, char **info)
 	tmp = ft_split(info[2], ',');
 	norm_vec = new_vec(my_atof(tmp[0]), my_atof(tmp[1]), my_atof(tmp[2]));
 	doublefree(tmp);
-	dh = malloc(sizeof(char *) * 2);
+	dh = malloc(sizeof(char *) * 3);
 	dh[0] = ft_strdup(info[3]);
 	dh[1] = ft_strdup(info[4]);
+	dh[2] = NULL;
+	scene->cylinders[pars->cy - 1] = new_cylinder(center, norm_vec, dh, info[5]);
 	doublefree(dh);
-	scene->cylinders[pars->cy - 1] = new_cylinder(center, norm_vec, dh, tmp[5]);
 	pars->cy--;
 	return (0);
 }

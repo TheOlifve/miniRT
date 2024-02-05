@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:20:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 18:49:07 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:54:42 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ float	my_atof(char *str);
 //	RAY TRACE
 int		ray_trace(t_mrt *mrt, t_scene *scene);
 float	sphere_touch(t_camera *cam, t_vector *ray, t_sphere *spheres);
+float	cylinder_touch(t_camera *cam, t_vector *ray, t_cylinder *cylinder);
 
 #endif

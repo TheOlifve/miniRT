@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/30 15:42:11 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:53:31 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_cylinder	*new_cylinder(t_vector *cent, t_vector *nvec, char **dh, char *clr)
 {
 	t_cylinder	*cylinder;
 
-	cylinder = malloc(sizeof(cylinder));
+	cylinder = malloc(sizeof(t_cylinder));
 	if (!cylinder)
 		err_exit(1);
 	cylinder->center = cent;

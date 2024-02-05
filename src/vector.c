@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 23:47:27 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/27 21:10:48 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:21:45 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,22 @@ t_vector	*new_vec(float x, float y, float z)
 	vec->x = x;
 	vec->y = y;
 	vec->z = z;
+	return (vec);
+}
+
+t_vector	*vec_sum(t_vector *vec1, t_vector *vec2)
+{
+	t_vector	*vec;
+
+	vec = new_vec(vec1->x + vec2->x, vec1->y + vec2->y, vec1->z + vec2->z);
+	return (vec);
+}
+
+t_vector	*vec_mul(t_vector *vec, float num)
+{
+	vec->x = vec->x * num;
+	vec->y = vec->y * num;
+	vec->z = vec->z * num;
 	return (vec);
 }
 
@@ -41,7 +57,7 @@ float	vec_len(t_vector *vec)
 	return (len);
 }
 
-float	vec_dot_product(t_vector *vec1, t_vector *vec2)
+float	vec_dot(t_vector *vec1, t_vector *vec2)
 {
 	float	num;
 
