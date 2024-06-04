@@ -6,23 +6,39 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 23:47:27 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/27 21:10:48 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:54:40 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vector	*new_vec(float x, float y, float z)
+double	vec_dot_product(t_vector *vec1, t_vector *vec2)
+{
+	double	num;
+
+	num = (vec1->x * vec2->x) + (vec1->y * vec2->y) + (vec1->z * vec2->z);
+	return (num);
+}
+
+t_vector	*cros_vec(t_vector *vec1, t_vector *vec2)
 {
 	t_vector	*vec;
 
-	vec = malloc(sizeof(t_vector));
-	if (!vec)
-		err_exit(1);
-	vec->x = x;
-	vec->y = y;
-	vec->z = z;
+	vec = new_vec(0, 0, 0);
+	vec->x = vec1->y * vec2->z - vec1->z * vec2->y;
+	vec->y = vec1->z * vec2->x - vec1->x * vec2->z;
+	vec->z = vec1->x * vec2->y - vec1->y * vec2->x;
 	return (vec);
+}
+
+void	vec_norm(t_vector *vec)
+{
+	double	len;
+
+	len = vec_len(vec);
+	vec->x /= len;
+	vec->y /= len;
+	vec->z /= len;
 }
 
 t_vector	*vec_sub(t_vector *vec1, t_vector *vec2)
@@ -33,28 +49,10 @@ t_vector	*vec_sub(t_vector *vec1, t_vector *vec2)
 	return (vec);
 }
 
-float	vec_len(t_vector *vec)
+double	vec_len(t_vector *vec)
 {
-	float	len;
+	double	len;
 
 	len = sqrt((vec->x * vec->x) + (vec->y * vec->y) + (vec->z * vec->z));
 	return (len);
-}
-
-float	vec_dot_product(t_vector *vec1, t_vector *vec2)
-{
-	float	num;
-
-	num = (vec1->x * vec2->x) + (vec1->y * vec2->y) + (vec1->z * vec2->z);
-	return (num);
-}
-
-void	vec_norm(t_vector *vec)
-{
-	float	len;
-
-	len = vec_len(vec);
-	vec->x /= len;
-	vec->y /= len;
-	vec->z /= len;
 }

@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:30:06 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 14:44:01 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/04 16:51:20 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	err_exit(int num)
 		write(2, "ERROR: bad file descriptor\n", 27);
 	else if (num == 4)
 		write(2, "ERROR: wrong file\n", 18);
-	system("leaks minirt");
 	exit(num);
 }
 

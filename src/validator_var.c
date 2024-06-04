@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:36:55 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 14:28:15 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:19:32 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	valid_coords(char *str)
 	char	**coords;
 
 	coords = ft_split(str, ',');
-	if (coords[0] == NULL)
+	if (valid_coords2(coords))
 		return (1);
-	if (coords[0] != NULL && coords[1] != NULL && coords[2] != NULL)
+	else if (coords[0] != NULL && coords[1] != NULL && coords[2] != NULL)
 	{
-		if (!valid_float(coords[0]) && !valid_float(coords[1])
-			&& !valid_float(coords[2]))
+		if (!valid_double(coords[0]) && !valid_double(coords[1])
+			&& !valid_double(coords[2]))
 			doublefree(coords);
 		else
 		{
@@ -44,15 +44,10 @@ int	valid_coords(char *str)
 			return (1);
 		}
 	}
-	else
-	{
-		doublefree(coords);
-		return (1);
-	}
 	return (0);
 }
 
-int	valid_float(char *str)
+int	valid_double(char *str)
 {
 	int	i;
 
@@ -85,9 +80,9 @@ int	valid_color(char *str, int i, int j)
 	char	**clr;
 
 	clr = ft_split(str, ',');
-	if (!clr)
+	if (valid_coords2(clr))
 		return (1);
-	if (clr[0] != NULL && clr[1] != NULL && clr[2] != NULL)
+	else if (clr[0] != NULL && clr[1] != NULL && clr[2] != NULL)
 	{
 		while (++i < 3)
 		{
@@ -108,18 +103,18 @@ int	valid_color(char *str, int i, int j)
 	return (0);
 }
 
-int	valid_norm_vec(char *str, int i, float j)
+int	valid_norm_vec(char *str, int i, double j)
 {
 	char	**vec;
 
 	vec = ft_split(str, ',');
-	if (!vec)
+	if (valid_coords2(vec))
 		return (1);
 	if (vec && vec[0] != NULL && vec[1] != NULL && vec[2] != NULL)
 	{
 		while (++i < 3)
 		{
-			if (valid_float(vec[i]))
+			if (valid_double(vec[i]))
 			{
 				doublefree(vec);
 				return (1);

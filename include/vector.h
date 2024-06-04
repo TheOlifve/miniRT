@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 23:40:19 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/18 16:35:07 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/04 13:26:54 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,23 @@
 
 typedef struct s_vector
 {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 }		t_vector;
 
 void		vec_norm(t_vector *vec);
-float		vec_len(t_vector *vec);
-float		vec_dot_product(t_vector *vec1, t_vector *vec2);
-t_vector	*new_vec(float x, float y, float z);
+double		vec_len(t_vector *vec);
+double		vec_dot_product(t_vector *vec1, t_vector *vec2);
+double		vec_dot_product2(t_vector *vec1, t_vector *vec2);
+t_vector	*new_vec(double x, double y, double z);
 t_vector	*vec_sub(t_vector *vec1, t_vector *vec2);
+t_vector	*vec_sub2(t_vector *vec1, t_vector *vec2);
+t_vector	*vec_sub3(t_vector *vec1, t_vector *vec2);
+t_vector	*vec_product(t_vector *vec1, double n);
+t_vector	*vec_sum(t_vector *vec1, t_vector *vec2);
+t_vector	*vec_sum2(t_vector *vec1, t_vector *vec2);
+t_vector	*vec_sum3(t_vector *vec1, t_vector *vec2);
+t_vector	*cros_vec(t_vector *vec1, t_vector *vec2);
 
 #endif

@@ -6,11 +6,28 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:06:05 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 15:23:53 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:19:43 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int	valid_coords2(char **str)
+{
+	int	i;
+
+	i = -1;
+	if (!str)
+		return (1);
+	while (str && str[++i])
+		;
+	if (i != 3)
+	{
+		doublefree(str);
+		return (1);
+	}
+	return (0);
+}
 
 char	**read_file(int fd, char *file)
 {
@@ -54,14 +71,25 @@ void	doublefree(char **str)
 	free(str);
 }
 
-int	rgbtoi(char	**color)
+int	rgbtoi(int	*color)
 {
 	int	r;
 	int	g;
 	int	b;
 
-	r = ft_atoi(color[1]) * (256 * 256);
-	g = ft_atoi(color[2]) * 256;
-	b = ft_atoi(color[3]);
+	r = color[0] * (256 * 256);
+	g = color[1] * 256;
+	b = color[2];
 	return (r + g + b);
+}
+
+int	*ctoi(char	**clr)
+{
+	int	*i;
+
+	i = malloc(sizeof(int) * 3);
+	i[0] = ft_atoi(clr[0]);
+	i[1] = ft_atoi(clr[1]);
+	i[2] = ft_atoi(clr[2]);
+	return (i);
 }

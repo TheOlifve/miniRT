@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:29:07 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 16:03:56 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:53:06 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,56 +15,94 @@
 
 # include "minirt.h"
 
+typedef struct s_ambient
+{
+	int		*color;
+	double	intence;
+}			t_ambient;
+
+typedef struct s_light
+{
+	int				*color;
+	double			intence;
+	t_vector		*center;
+}			t_light;
+
 typedef struct s_camera
 {
-	float		fov;
+	double		fov;
 	t_vector	*center;
 	t_vector	*direction;
 }			t_camera;
 
 typedef struct s_sphere
 {
-	int			color;
-	float		r;
+	int			*color;
+	double		r;
 	t_vector	*center;
 }			t_sphere;
 
 typedef struct s_plane
 {
-	int			color;
+	int			*color;
 	t_vector	*point;
 	t_vector	*norm_vec;
 }			t_plane;
 
 typedef struct s_cylinder
 {
-	int			color;
-	float		r;
-	float		h;
+	int			*color;
+	double		r;
+	double		h;
+	int			head;
 	t_vector	*center;
 	t_vector	*norm_vec;
 }			t_cylinder;
 
-typedef struct s_scene
-{
-	t_camera	*cams;
-	t_sphere	*spheres;
-	float		width;
-	float		height;
-}			t_scene;
-
 typedef struct s_vplane
 {
-	float		x_pixel;
-	float		y_pixel;
-	float		width;
-	float		height;
+	double		x_pixel;
+	double		y_pixel;
+	double		width;
+	double		height;
 }			t_vplane;
 
-t_scene		*new_scene(t_camera *cam, t_sphere *sphere);
-t_vplane	*get_vplane(float width, float height, float fov);
-t_sphere	*new_sphere(t_vector *center, float diameter, char **color);
-t_camera	*new_cam(t_vector *center, t_vector *direction, float fov);
-t_cylinder	*new_cylinder(t_vector *vec, t_vector *nvec, char **dh, char **clr);
+typedef struct s_diff
+{
+	int				tipe;
+	t_sphere		*spheres;
+	t_plane			*planes;
+	t_cylinder		*cylinders;
+	double			t;
+	double			lt;
+	struct s_diff	*next;
+	struct s_diff	*prev;
+}			t_diff;
+
+typedef struct s_scene
+{
+	t_diff		*diff;
+	t_diff		*obj;
+	t_light		*light;
+	t_plane		**planes;
+	t_camera	*cam;
+	t_vplane	*vplane;
+	t_sphere	**spheres;
+	t_cylinder	**cylinders;
+	t_ambient	*ambient;
+	int			tipe;
+	double		x;
+	double		lx;
+	int			*amb;
+	double		width;
+	double		height;
+}			t_scene;
+
+int			*new_amb(double intence, char *color);
+t_plane		*new_plane(char *info);
+t_vplane	*get_vplane(double width, double height, double fov);
+t_sphere	*new_sphere(char *info);
+t_camera	*new_cam(char **element);
+t_cylinder	*new_cylinder(char *info);
 
 #endif

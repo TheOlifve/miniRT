@@ -6,7 +6,7 @@
 #    By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/16 16:27:45 by hrahovha          #+#    #+#              #
-#    Updated: 2024/01/28 15:27:15 by hrahovha         ###   ########.fr        #
+#    Updated: 2024/06/04 15:05:49 by hrahovha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minirt
 
 GCC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 IFLAGS = -Ilibs/mlx -Ilibs/libft/libft.a -Iinclude
 LFLAGS = -Llibs/libft -lft -Llibs/mlx -lmlx -framework OpenGL -framework AppKit
 

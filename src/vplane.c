@@ -6,16 +6,16 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:16:04 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/01/28 14:36:00 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:24:51 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vplane	*get_vplane(float width, float height, float fov)
+t_vplane	*get_vplane(double width, double height, double fov)
 {
 	t_vplane	*vplane;
-	float		aspect_ratio;
+	double		aspect_ratio;
 
 	vplane = malloc(sizeof(t_vplane));
 	if (!vplane)
