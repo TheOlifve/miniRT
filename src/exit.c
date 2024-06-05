@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:30:06 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/06/05 15:48:41 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:06:01 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ void	err_exit(int num)
 int	my_exit(t_mrt *mrt)
 {
 	mlx_destroy_window(mrt->mlx, mrt->mlx_win);
-	system("leaks minirt");
 	exit(0);
 }

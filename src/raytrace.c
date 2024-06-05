@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/06/05 15:55:14 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:03:39 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	help_func2(t_mrt *mrt, int	*tipe, t_vector *cam, t_diff *diff)
+void	help_func2(int	*tipe, t_vector *cam, t_diff *diff)
 {
 	double		n;
 	double		a;
@@ -26,18 +26,15 @@ void	help_func2(t_mrt *mrt, int	*tipe, t_vector *cam, t_diff *diff)
 	vec3 = vec_sub(vec, vec2);
 	n = vec_len(vec3);
 	if (n < diff->cylinders->r && a >= 0 && a <= diff->cylinders->h)
-	{
 		*tipe = -1;
-		mrt->color = 0;
-	}
 	free(vec);
 	free(vec2);
 	free(vec3);
 }
 
-void	help_func(t_mrt *mrt, int *tipe, t_vector *cam, t_diff *diff)
+void	help_func(int *tipe, t_vector *cam, t_diff *diff)
 {
-	double	n;
+	double		n;
 	t_sphere	*sphere;
 
 	while (diff)
@@ -49,13 +46,10 @@ void	help_func(t_mrt *mrt, int *tipe, t_vector *cam, t_diff *diff)
 				+ (cam->y - sphere->center->y) * (cam->y - sphere->center->y)
 				+ (cam->z - sphere->center->z) * (cam->z - sphere->center->z);
 			if (n < (sphere->r * sphere->r))
-			{
 				*tipe = -1;
-				mrt->color = 0;
-			}
 		}
 		if (diff->tipe == 3)
-			help_func2(mrt, tipe, cam, diff);
+			help_func2(tipe, cam, diff);
 		if (diff->next)
 			diff = diff->next;
 		else
@@ -70,7 +64,7 @@ void	get_object(t_mrt *mrt, t_scene *scene, t_vector *ray)
 	while (scene->diff)
 	{
 		scene->diff->t = 0;
-		help_func(mrt, &scene->tipe, scene->cam->center, scene->diff);
+		help_func(&scene->tipe, scene->cam->center, scene->diff);
 		if (scene->diff->tipe == 1)
 			scene->diff->t = sphere_touch(scene->cam->center, \
 				ray, scene->diff->spheres, NULL);
@@ -90,7 +84,7 @@ void	get_object(t_mrt *mrt, t_scene *scene, t_vector *ray)
 		scene->diff = scene->diff->prev;
 	if (scene->tipe == 0 && scene->x > 0)
 		get_color(mrt, scene, ray);
-	else if (scene->tipe == 0)
+	else
 		mrt->color = 0;
 }
 

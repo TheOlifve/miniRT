@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:42:48 by rugrigor          #+#    #+#             */
-/*   Updated: 2024/06/05 16:03:55 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:59:28 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	list_free(t_diff *diff)
 {
-	t_diff *tmp;
+	t_diff	*tmp;
 
 	tmp = NULL;
 	while (diff->prev != NULL)

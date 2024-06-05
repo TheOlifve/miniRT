@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator_var.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:36:55 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/06/03 16:19:32 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:52:54 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	valid_double(char *str)
 	int	i;
 
 	i = 0;
-	if (str[0] == '-')
+	if (str[0] == '-' || str[0] == '+')
 		i++;
 	if (str[i] == '.')
 		return (1);

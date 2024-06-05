@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:09:09 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/06/05 15:53:14 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:59:58 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	open_win(t_scene *scene, t_mrt *mrt)
 	scene->height = 600;
 	mrt->mlx_win = mlx_new_window(mrt->mlx, scene->width, \
 		scene->height, "miniRT");
-	ray_trace(mrt, scene, 0, 0);
+	if (scene->diff)
+		ray_trace(mrt, scene, 0, 0);
 }
 
 int	main(int argc, char **argv)
@@ -44,7 +45,7 @@ int	main(int argc, char **argv)
 	if (pars.a == 0 || pars.c == 0 || pars.l == 0)
 		mrt.mlx_win = mlx_new_window(mrt.mlx, 800, \
 			600, "miniRT")
-		;
+			;
 	else
 	{
 		scene = new_scene(&pars);

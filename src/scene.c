@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:53:40 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/06/03 16:45:54 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:45:32 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,10 @@ void	init_scene(t_scene *scene, t_pars *pars)
 
 t_scene	*new_scene(t_pars *pars)
 {
-	t_scene		*scene;
+	t_scene	*scene;
 
 	scene = malloc(sizeof(t_scene));
+	scene->diff = NULL;
 	init_scene(scene, pars);
 	return (scene);
 }
