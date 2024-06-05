@@ -6,7 +6,7 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:04:08 by rugrigor          #+#    #+#             */
-/*   Updated: 2024/06/04 16:56:59 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:43:05 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,18 +100,12 @@ double	cylinder_touch(t_vector *cam, t_vector *ray, t_cylinder **cyl)
 
 	(*cyl)->head = 0;
 	t = cylinder_touch2(cam, ray, *cyl);
-	if (!t)
-		return (0);
 	vec = vec_sum3((*cyl)->center, vec_product((*cyl)->norm_vec, (*cyl)->h));
 	touch = vec_sum3(cam, vec_product(ray, t));
 	a = vec_dot_product2((*cyl)->norm_vec, vec_sub(touch, (*cyl)->center));
 	b = vec_dot_product2((*cyl)->norm_vec, vec_sub(touch, vec));
 	if (a > 0 && b < 0)
-	{
-		free(vec);
-		free(touch);
-		return (t);
-	}
+		return (a_b_help(vec, touch, t));
 	a = head_int(cam, ray, (*cyl)->norm_vec, (*cyl)->center);
 	b = head_int(cam, ray, (*cyl)->norm_vec, vec);
 	t = cyl_touch_help(*cyl, a, b, t);

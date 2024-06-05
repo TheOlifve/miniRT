@@ -6,47 +6,63 @@
 /*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:37:10 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/06/04 16:58:15 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:55:14 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	help_func(t_mrt *mrt, t_scene *scene, t_vector *cam, t_diff *diff)
+void	help_func2(t_mrt *mrt, int	*tipe, t_vector *cam, t_diff *diff)
 {
 	double		n;
-	t_sphere	*sphere;
+	double		a;
+	t_vector	*vec;
+	t_vector	*vec2;
+	t_vector	*vec3;
 
-	if (diff->tipe == 1)
+	vec = vec_sub(cam, diff->cylinders->center);
+	a = vec_dot_product(vec, diff->cylinders->norm_vec);
+	vec2 = vec_product(diff->cylinders->norm_vec, a);
+	vec3 = vec_sub(vec, vec2);
+	n = vec_len(vec3);
+	if (n < diff->cylinders->r && a >= 0 && a <= diff->cylinders->h)
 	{
-		sphere = diff->spheres;
-		n = (cam->x - sphere->center->x) * (cam->x - sphere->center->x)
-			+ (cam->y - sphere->center->y) * (cam->y - sphere->center->y)
-			+ (cam->x - sphere->center->z) * (cam->x - sphere->center->z);
-		if (n < (sphere->r * sphere->r))
-		{
-			scene->tipe = -1;
-			mrt->color = rgbtoi(scene->diff->spheres->color);
-			return (1);
-		}
+		*tipe = -1;
+		mrt->color = 0;
 	}
-	else if (diff->tipe == 2 && diff->t)
-		mrt->color = rgbtoi(scene->diff->planes->color);
-	else if (diff->tipe == 3)
-	{
-		mrt->color = rgbtoi(scene->diff->cylinders->color);
-	}
-	return (0);
+	free(vec);
+	free(vec2);
+	free(vec3);
 }
 
-void	get_help(t_scene *scene)
+void	help_func(t_mrt *mrt, int *tipe, t_vector *cam, t_diff *diff)
 {
-	if ((scene->x == 0 && scene->diff->t)
-		|| (scene->x && scene->diff->t && scene->diff->t < scene->x))
+	double	n;
+	t_sphere	*sphere;
+
+	while (diff)
 	{
-		scene->obj = scene->diff;
-		scene->x = scene->diff->t;
+		if (diff->tipe == 1)
+		{
+			sphere = diff->spheres;
+			n = (cam->x - sphere->center->x) * (cam->x - sphere->center->x)
+				+ (cam->y - sphere->center->y) * (cam->y - sphere->center->y)
+				+ (cam->z - sphere->center->z) * (cam->z - sphere->center->z);
+			if (n < (sphere->r * sphere->r))
+			{
+				*tipe = -1;
+				mrt->color = 0;
+			}
+		}
+		if (diff->tipe == 3)
+			help_func2(mrt, tipe, cam, diff);
+		if (diff->next)
+			diff = diff->next;
+		else
+			break ;
 	}
+	while (diff->prev)
+		diff = diff->prev;
 }
 
 void	get_object(t_mrt *mrt, t_scene *scene, t_vector *ray)
@@ -54,6 +70,7 @@ void	get_object(t_mrt *mrt, t_scene *scene, t_vector *ray)
 	while (scene->diff)
 	{
 		scene->diff->t = 0;
+		help_func(mrt, &scene->tipe, scene->cam->center, scene->diff);
 		if (scene->diff->tipe == 1)
 			scene->diff->t = sphere_touch(scene->cam->center, \
 				ray, scene->diff->spheres, NULL);
@@ -64,7 +81,6 @@ void	get_object(t_mrt *mrt, t_scene *scene, t_vector *ray)
 			scene->diff->t = cylinder_touch(scene->cam->center, \
 				ray, &scene->diff->cylinders);
 		get_help(scene);
-		help_func(mrt, scene, scene->cam->center, scene->diff);
 		if (scene->diff->next)
 			scene->diff = scene->diff->next;
 		else
@@ -88,7 +104,7 @@ t_vector	*ray_dir(t_scene *scene, double x, double y)
 	scene->obj = NULL;
 	scene->x = 0;
 	if (scene->cam->direction->x == 0 && scene->cam->direction->z == 0
-		&& (scene->cam->direction->y == 1 || scene->cam->direction->y == -1))
+		&& (scene->cam->direction->y > 0 || scene->cam->direction->y < 0))
 		up = new_vec(0, 0, 1);
 	else
 		up = new_vec(0, 1, 0);
@@ -106,10 +122,8 @@ t_vector	*ray_dir(t_scene *scene, double x, double y)
 	return (dir);
 }
 
-int	ray_trace(t_mrt *mrt, t_scene *scene)
+int	ray_trace(t_mrt *mrt, t_scene *scene, double x, double y)
 {
-	double		x;
-	double		y;
 	t_vector	*ray;
 	t_vplane	*vplanes;
 
@@ -131,11 +145,6 @@ int	ray_trace(t_mrt *mrt, t_scene *scene)
 		}
 		mrt->y++;
 		y--;
-		// if (y == 50)
-		// {
-		// 	printf("!");
-		// 	exit(0);
-		// }
 	}
 	list_free(scene->diff);
 	free(vplanes);

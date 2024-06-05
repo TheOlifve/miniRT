@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lights.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:37:59 by hrahovha          #+#    #+#             */
-/*   Updated: 2024/06/03 17:39:41 by hrahovha         ###   ########.fr       */
+/*   Updated: 2024/06/05 11:25:26 by rugrigor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,21 @@ void	hard_vers(t_scene *scene, t_mrt *mrt, int *color, double intence)
 	if (color1[2] > 255)
 		color1[2] = 255;
 	light_vers(mrt, color1, color);
+}
+
+void	get_help(t_scene *scene)
+{
+	if ((scene->x == 0 && scene->diff->t)
+		|| (scene->x && scene->diff->t && scene->diff->t < scene->x))
+	{
+		scene->obj = scene->diff;
+		scene->x = scene->diff->t;
+	}
+}
+
+double	a_b_help(t_vector	*vec, t_vector *touch, double t)
+{
+	free(vec);
+	free(touch);
+	return (t);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rugrigor <rugrigor@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrahovha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 11:42:48 by rugrigor          #+#    #+#             */
-/*   Updated: 2024/06/03 15:43:26 by rugrigor         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:03:55 by hrahovha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	list_free(t_diff *diff)
 {
-	int		x;
+	t_diff *tmp;
 
-	x = 0;
+	tmp = NULL;
 	while (diff->prev != NULL)
-	{
 		diff = diff->prev;
-		x++;
-	}
-	while (x-- != 0)
-		diff = diff->next;
-	while (diff->prev != NULL)
+	while (diff && diff->next != NULL)
 	{
-		if (diff->next)
-			free(diff->next);
-		diff = diff->prev;
+		if (diff->next == NULL)
+			break ;
+		else
+		{
+			tmp = diff->next;
+			free(diff);
+			diff = tmp;
+		}
 	}
 	free(diff);
 }
